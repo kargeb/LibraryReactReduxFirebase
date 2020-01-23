@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import useDropdown from "./useDropdown.jsx";
 import { ADD_BOOK } from "./store/reducer.js";
+import { firebaseApp } from "./fbase";
 
 export const Add = ({ setBooks, books }) => {
   const [author, setAuthor] = useState("");
@@ -26,6 +27,11 @@ export const Add = ({ setBooks, books }) => {
       genre,
       audience
     };
+
+    firebaseApp
+      .firestore()
+      .collection("books")
+      .add({ ...newBook });
 
     dispatch({ type: ADD_BOOK, payload: newBook });
   };
