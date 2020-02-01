@@ -1,52 +1,51 @@
-import React, { useEffect } from "react";
-import { Add } from "./Add.jsx";
-import Inventory from "./Inventory.jsx";
-import { Router, Link } from "@reach/router";
-import { useDispatch, useSelector } from "react-redux";
-import { ADD_BOOK } from "./store/reducer";
-import { firebaseApp } from "./fbase";
+import React, { Component } from "react";
+import AddBook from "./AddBook";
+import Inventory from "./Inventory";
 
-export const App = () => {
-  const dispatch = useDispatch();
-  const books = useSelector(state => state.reducer.books);
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      books: []
+    };
+  }
 
-  // useEffect(() => {
-  //   fetch("http://clockworkjava.pl/books.php")
-  //     .then(response => {
-  //       return response.json();
-  //     })
-  //     .then(data => {
-  //       data.forEach(book => {
-  //         dispatch({ type: ADD_BOOK, payload: book });
-  //       });
-  //     });
-  // }, []);
+  componentDidMount() {
+    this.setState({
+      books: [
+        {
+          title: "Straz! Straz!",
+          author: "Terry Pratchett",
+          publicationDate: "1989",
+          genre: "Fantastyka",
+          audience: "Młodzież"
+        },
+        {
+          title: "Dwie wieze",
+          author: "J. R. R. Tolkien",
+          publicationDate: "1954",
+          genre: "Fantastyka",
+          audience: "Młodzież"
+        }
+      ]
+    });
+  }
 
-  useEffect(() => {
-    const unsub = firebaseApp
-      .firestore()
-      .collection("books")
-      .get()
-      .then(books =>
-        books.docs.forEach(book => {
-          dispatch({ type: ADD_BOOK, payload: book.data() });
-        })
-      );
+  addBook = newBook => {
+    console.log(newBook);
+  };
 
-    return () => unsub();
-  }, []);
-
-  return (
-    <React.StrictMode>
-      <div id="created-by-react">
-        <Link to="/">
+  render() {
+    return (
+      <React.StrictMode>
+        <div id="created-by-react">
           <h1>React Bookstore</h1>
-        </Link>
-        <Router>
-          <Add path="/admin" />
-          <Inventory books={books} path="/" />
-        </Router>
-      </div>
-    </React.StrictMode>
-  );
-};
+          <Inventory books={this.state.books} path="/" />
+          <AddBook addBook={this.addBook} />
+        </div>
+      </React.StrictMode>
+    );
+  }
+}
+
+export default App;

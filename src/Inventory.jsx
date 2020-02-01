@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "@reach/router";
+// import { Link } from "@reach/router";
 import { Book } from "./Book.jsx";
 
 const Inventory = ({ books }) => {
@@ -14,12 +14,7 @@ const Inventory = ({ books }) => {
     />
   ));
 
-  return (
-    <>
-      {books.length === 0 ? <h3>Brak książek</h3> : bookComponent}
-      <Link to="/admin">Zarządzaj inwentarzem </Link>
-    </>
-  );
+  return <>{books.length === 0 ? <h3>Brak książek</h3> : bookComponent}</>;
 };
 
 export default Inventory;
