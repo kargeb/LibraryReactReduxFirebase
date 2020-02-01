@@ -4,7 +4,7 @@ import useDropdown from "./useDropdown.jsx";
 import { ADD_BOOK } from "./store/reducer.js";
 import { firebaseApp } from "./fbase";
 
-export const Add = ({ setBooks, books }) => {
+export const Add = () => {
   const [author, setAuthor] = useState("");
   const [publicationDate, setPublicationDate] = useState("");
   const [title, setTitle] = useState("");

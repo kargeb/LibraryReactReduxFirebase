@@ -7,7 +7,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK: {
-      console.log("jestem w addBOOK");
       const newBooks = [...state.books, action.payload];
 
       return {
@@ -16,8 +15,7 @@ export default (state = initialState, action) => {
       };
     }
     default: {
-      console.warn(`Unknow action ${action.type}`);
-      console.log("jeste w default");
+      // console.warn(`Unknow action ${action.type}`);
       return { ...state };
     }
   }
