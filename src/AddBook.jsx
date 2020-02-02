@@ -4,7 +4,7 @@ class AddBook extends Component {
   constructor(props) {
     super(props);
 
-    this.addBooks = this.props.addBooks;
+    this.addBook = this.props.addBook;
 
     this.state = {
       title: "",
@@ -20,7 +20,7 @@ class AddBook extends Component {
     console.log("dzialam");
     console.log(e.target[0].id);
 
-    this.addBooks(this.state);
+    this.addBook(this.state);
   };
 
   handleForm = e => {

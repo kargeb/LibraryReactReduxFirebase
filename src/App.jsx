@@ -33,6 +33,8 @@ class App extends Component {
 
   addBook = newBook => {
     console.log(newBook);
+
+    this.setState(prevState => ({ books: [...prevState.books, newBook] }));
   };
 
   render() {
