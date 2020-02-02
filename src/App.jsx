@@ -59,6 +59,14 @@ class App extends Component {
     }));
   };
 
+  removeFromCart = title => {
+    const newOrders = this.state.orders.filter(order => order !== title);
+
+    this.setState({
+      orders: newOrders
+    });
+  };
+
   render() {
     return (
       <React.StrictMode>
@@ -66,13 +74,16 @@ class App extends Component {
           <Row className="justify-content-md-center bg-primary text-white">
             <h1>React Bookstore</h1>
           </Row>
-          <Row className="text-center">
-            <Col>
+          <Row>
+            <Col sm={8} className="text-center">
               <Inventory books={this.state.books} addToCart={this.addToCart} />
             </Col>
-            <Col>
+            <Col sm={4} className="text-center">
               <AddBook addBook={this.addBook} />
-              <Cart orders={this.state.orders} />
+              <Cart
+                orders={this.state.orders}
+                removeFromCart={this.removeFromCart}
+              />
             </Col>
           </Row>
         </div>

@@ -1,24 +1,25 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
+import "./Cart.css";
 
-const Cart = ({ orders }) => (
-  <div
-    style={{
-      border: "3px solid #007BFF",
-      margin: "50px auto",
-      borderRadius: "20px",
-      width: "50%"
-    }}
-  >
-    <h1>
-      <Badge variant="secondary">Cart</Badge>
-    </h1>
-
+const Cart = ({ orders, removeFromCart }) => (
+  <div className="cart">
+    <h1 className="bg-primary text-white">Cart</h1>
     {orders.length ? (
-      <ul style={{ display: "inline-block" }} className="text-left">
+      <ul className="cart__ul text-left">
         {orders.map(order => (
           <li key={order}>
-            <h3>{order}</h3>
+            <h5>
+              {order}
+              {"  "}
+              <Badge
+                className="cart__badge"
+                onClick={() => removeFromCart(order)}
+                variant="danger"
+              >
+                X
+              </Badge>
+            </h5>
           </li>
         ))}
       </ul>

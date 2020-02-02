@@ -1,0 +1,15 @@
+.cart {
+  border: 3px solid #007bff;
+  margin: 50px auto;
+  border-radius: 20px;
+  width: 50%;
+  overflow: hidden;
+}
+
+.cart__ul {
+  display: inline-block;
+}
+
+.cart__badge {
+  cursor: pointer;
+}
