@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "@reach/router";
 import { Book } from "./Book.jsx";
 
-const Inventory = ({ books }) => {
+const Inventory = ({ books, addToCart }) => {
   const bookComponent = books.map(book => (
     <Book
       key={book.title}
@@ -11,6 +11,7 @@ const Inventory = ({ books }) => {
       publicationDate={book.publicationDate}
       audience={book.audience}
       genre={book.genre}
+      addToCart={addToCart}
     />
   ));
 

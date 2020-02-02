@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import AddBook from "./AddBook";
 import Inventory from "./Inventory";
+import Cart from "./Cart";
 import "./App.css";
-import { Row, Col, Badge } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      books: []
+      books: [],
+      orders: []
     };
   }
 
@@ -28,15 +30,33 @@ class App extends Component {
           publicationDate: "1954",
           genre: "Fantastyka",
           audience: "Młodzież"
+        },
+        {
+          title: "Komnata Tajemnic",
+          author: "J. K. Rowling",
+          publicationDate: "1998",
+          genre: "Fantastyka",
+          audience: "Młodzież"
+        },
+        {
+          title: "Good Omens",
+          author: "Terry Pratchett",
+          publicationDate: "1990",
+          genre: "Fantastyka",
+          audience: "Młodzież"
         }
       ]
     });
   }
 
   addBook = newBook => {
-    console.log(newBook);
-
     this.setState(prevState => ({ books: [...prevState.books, newBook] }));
+  };
+
+  addToCart = title => {
+    this.setState(prevState => ({
+      orders: [...prevState.orders, title]
+    }));
   };
 
   render() {
@@ -48,10 +68,11 @@ class App extends Component {
           </Row>
           <Row className="text-center">
             <Col>
-              <Inventory books={this.state.books} path="/" />
+              <Inventory books={this.state.books} addToCart={this.addToCart} />
             </Col>
             <Col>
               <AddBook addBook={this.addBook} />
+              <Cart orders={this.state.orders} />
             </Col>
           </Row>
         </div>
