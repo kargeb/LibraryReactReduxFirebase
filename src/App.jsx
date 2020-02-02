@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import AddBook from "./AddBook";
 import Inventory from "./Inventory";
+import "./App.css";
+import { Row, Col, Badge } from "react-bootstrap";
 
 class App extends Component {
   constructor() {
@@ -41,9 +43,17 @@ class App extends Component {
     return (
       <React.StrictMode>
         <div id="created-by-react">
-          <h1>React Bookstore</h1>
-          <Inventory books={this.state.books} path="/" />
-          <AddBook addBook={this.addBook} />
+          <Row className="justify-content-md-center bg-primary text-white">
+            <h1>React Bookstore</h1>
+          </Row>
+          <Row className="text-center">
+            <Col>
+              <Inventory books={this.state.books} path="/" />
+            </Col>
+            <Col>
+              <AddBook addBook={this.addBook} />
+            </Col>
+          </Row>
         </div>
       </React.StrictMode>
     );

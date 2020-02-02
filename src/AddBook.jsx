@@ -21,6 +21,14 @@ class AddBook extends Component {
     console.log(e.target[0].id);
 
     this.addBook(this.state);
+
+    this.setState({
+      title: "",
+      author: "",
+      publicationDate: "",
+      genre: "",
+      audience: ""
+    });
   };
 
   handleForm = e => {
