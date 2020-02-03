@@ -55,16 +55,6 @@ class App extends Component {
     });
   };
 
-  insertErrorAsHtml() {
-    return (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${this.state.err}`
-        }}
-      />
-    );
-  }
-
   render() {
     return (
       <React.StrictMode>
@@ -75,6 +65,7 @@ class App extends Component {
               orders={this.state.orders}
               addToCart={this.addToCart}
               removeFromCart={this.removeFromCart}
+              err={this.state.err}
               path="/"
             />
             <AddBook addBook={this.addBook} path="/admin" />
@@ -86,7 +77,3 @@ class App extends Component {
 }
 
 export default App;
-
-{
-  /* <Alert variant="danger">{this.insertErrorAsHtml()}</Alert> */
-}
