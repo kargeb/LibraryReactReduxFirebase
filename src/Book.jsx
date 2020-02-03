@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import "./Book.css";
 
 export const Book = ({
   title,
@@ -9,8 +10,8 @@ export const Book = ({
   genre,
   addToCart
 }) => (
-  <div style={{ display: "inline-block" }}>
-    <Card bg="light" style={{ width: "18rem", margin: "10px" }}>
+  <div className="book__wrapper">
+    <Card bg="light" className="book__card">
       <Card.Header>{genre}</Card.Header>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
@@ -21,8 +22,7 @@ export const Book = ({
         </Card.Text>
       </Card.Body>
       <Button
-        className="btn btn-success"
-        style={{ width: "50%", margin: "0 auto 10px auto" }}
+        className="btn btn-success book__button"
         onClick={() => addToCart(title)}
       >
         Wybierz

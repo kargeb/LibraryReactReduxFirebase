@@ -1,0 +1,13 @@
+.book__wrapper {
+  display: inline-block;
+}
+
+.book__card {
+  width: 18rem;
+  margin: 10px;
+}
+
+.book__button {
+  width: 50%;
+  margin: 0 auto 10px auto;
+}
