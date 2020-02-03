@@ -3,8 +3,8 @@ import AddBook from "./AddBook";
 import Inventory from "./Inventory";
 import Cart from "./Cart";
 import "./App.css";
-import { Row, Col, Alert } from "react-bootstrap";
-import { Route, BrowserRouter } from "@reach/router";
+import { Container } from "react-bootstrap";
+import { Router } from "@reach/router";
 
 class App extends Component {
   constructor() {
@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   getBooksFromNet = () => {
-    const url = "http://clockworkjava.pl/boooks.php";
+    const url = "http://clockworkjava.pl/books.php";
 
     fetch(url)
       .then(response => {
@@ -68,34 +68,25 @@ class App extends Component {
   render() {
     return (
       <React.StrictMode>
-        <div id="created-by-react">
-          <Row className="justify-content-md-center bg-primary text-white">
-            <h1>React Bookstore</h1>
-            {/* {this.MyComponent()} */}
-          </Row>
-          <Row>
-            <Col sm={8} className="text-center">
-              {this.state.err ? (
-                <Alert variant="danger">{this.insertErrorAsHtml()}</Alert>
-              ) : (
-                <Inventory
-                  books={this.state.books}
-                  addToCart={this.addToCart}
-                />
-              )}
-            </Col>
-            <Col sm={4} className="text-center">
-              <AddBook addBook={this.addBook} />
-              <Cart
-                orders={this.state.orders}
-                removeFromCart={this.removeFromCart}
-              />
-            </Col>
-          </Row>
-        </div>
+        <Container fluid id="created-by-react">
+          <Router>
+            <Inventory
+              books={this.state.books}
+              orders={this.state.orders}
+              addToCart={this.addToCart}
+              removeFromCart={this.removeFromCart}
+              path="/"
+            />
+            <AddBook addBook={this.addBook} path="/admin" />
+          </Router>
+        </Container>
       </React.StrictMode>
     );
   }
 }
 
 export default App;
+
+{
+  /* <Alert variant="danger">{this.insertErrorAsHtml()}</Alert> */
+}

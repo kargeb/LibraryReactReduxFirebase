@@ -15,16 +15,14 @@ export const Book = ({
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>
-          {author}
-          <br />
-          {publicationDate}
-          <br />
+          {author} <br />
+          {publicationDate} <br />
           {audience}
         </Card.Text>
       </Card.Body>
       <Button
         className="btn btn-success"
-        style={{ width: "50%", margin: "0 auto" }}
+        style={{ width: "50%", margin: "0 auto 10px auto" }}
         onClick={() => addToCart(title)}
       >
         Wybierz
@@ -32,19 +30,3 @@ export const Book = ({
     </Card>
   </div>
 );
-
-{
-  /* <Card bg="light" style={{ width: "18rem" }}>
-  <Card.Header>{genre}</Card.Header>
-  <Card.Body>
-    <Card.Title>{title}</Card.Title>
-    <Card.Text>
-      {author}
-      <br />
-      {publicationDate}
-      <br />
-      {audience}
-    </Card.Text>
-  </Card.Body>
-</Card>; */
-}
