@@ -1,11 +1,8 @@
 import React from "react";
-// import { Link } from "@reach/router";
 import { Book } from "./Book.jsx";
 import { Row, Col, Alert } from "react-bootstrap";
-import { Link } from "@reach/router";
-import Cart from "./Cart";
 
-const Inventory = ({ books, addToCart, orders, removeFromCart, err }) => {
+const Inventory = ({ books, addToCart, err }) => {
   const bookComponent = books.map(book => (
     <Book
       key={book.title}
@@ -21,15 +18,6 @@ const Inventory = ({ books, addToCart, orders, removeFromCart, err }) => {
   return (
     <>
       <Row>
-        <Col className="justify-content-md-center bg-primary text-white text-center">
-          <h1>React Bookstore</h1>
-
-          <Link to="/admin">
-            <h4 style={{ color: "black" }}>Go to admin panel</h4>
-          </Link>
-        </Col>
-      </Row>
-      <Row>
         {err ? (
           <Alert variant="danger" className="text-center">
             {" "}
@@ -41,11 +29,8 @@ const Inventory = ({ books, addToCart, orders, removeFromCart, err }) => {
           </Alert>
         ) : (
           <>
-            <Col sm={8}>
+            <Col>
               {books.length === 0 ? <h3>Brak książek</h3> : bookComponent}
-            </Col>
-            <Col sm={4}>
-              <Cart orders={orders} removeFromCart={removeFromCart} />
             </Col>
           </>
         )}

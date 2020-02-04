@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import AddBook from "./AddBook";
-import Inventory from "./Inventory";
-import Cart from "./Cart";
 import "./App.css";
 import { Container } from "react-bootstrap";
 import { Router } from "@reach/router";
+import Bookstore from "./views/Bookstore";
+import AdminPanel from "./views/AdminPanel";
 
 class App extends Component {
   constructor() {
@@ -41,34 +40,13 @@ class App extends Component {
     this.setState(prevState => ({ books: [...prevState.books, newBook] }));
   };
 
-  addToCart = title => {
-    this.setState(prevState => ({
-      orders: [...prevState.orders, title]
-    }));
-  };
-
-  removeFromCart = title => {
-    const newOrders = this.state.orders.filter(order => order !== title);
-
-    this.setState({
-      orders: newOrders
-    });
-  };
-
   render() {
     return (
       <React.StrictMode>
         <Container fluid id="created-by-react">
           <Router>
-            <Inventory
-              books={this.state.books}
-              orders={this.state.orders}
-              addToCart={this.addToCart}
-              removeFromCart={this.removeFromCart}
-              err={this.state.err}
-              path="/"
-            />
-            <AddBook addBook={this.addBook} path="/admin" />
+            <Bookstore path="/" stateApp={this.state} />
+            <AdminPanel path="/admin" addBook={this.addBook} />
           </Router>
         </Container>
       </React.StrictMode>

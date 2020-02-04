@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
-import { Link } from "@reach/router";
 
 class AddBook extends Component {
   constructor(props) {
@@ -38,15 +37,6 @@ class AddBook extends Component {
   render() {
     return (
       <>
-        <Row>
-          <Col className="justify-content-md-center bg-dark text-white text-center">
-            <h1>Admin Panel</h1>
-
-            <Link to="/">
-              <h4 style={{ color: "black" }}>Go to BookStore</h4>
-            </Link>
-          </Col>
-        </Row>
         <Row>
           <Col>
             <h2>Dodaj książkę</h2>
