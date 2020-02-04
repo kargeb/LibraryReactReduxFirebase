@@ -3,9 +3,9 @@ import { Book } from "./Book.jsx";
 import { Row, Col, Alert } from "react-bootstrap";
 
 const Inventory = ({ books, addToCart, err }) => {
-  const bookComponent = books.map(book => (
+  const bookComponent = books.map((book, idx) => (
     <Book
-      key={book.title}
+      key={idx}
       title={book.title}
       author={book.author}
       publicationDate={book.publicationDate}

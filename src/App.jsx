@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import { Router } from "@reach/router";
 import Bookstore from "./views/Bookstore";
 import AdminPanel from "./views/AdminPanel";
+import { fbase } from "./fbase";
 
 class App extends Component {
   constructor() {
@@ -19,18 +20,13 @@ class App extends Component {
   }
 
   getBooksFromNet = () => {
-    const url = "http://clockworkjava.pl/books.php";
-
-    fetch(url)
-      .then(response => {
-        return response.json();
-      })
-      .then(fetchedBooks => {
-        this.setState({ books: [...fetchedBooks] });
-      })
-      .catch(err => {
-        this.setState({
-          err: `Something wrong with downolading book from ${url} <br> ${err}`
+    fbase
+      .collection("books")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          console.log(doc.data());
+          this.addBook(doc.data());
         });
       });
   };
@@ -44,7 +40,7 @@ class App extends Component {
       <React.StrictMode>
         <Container fluid id="created-by-react">
           <Router>
-            <Bookstore path="/" stateApp={this.state} />
+            <Bookstore path="/" stateApp={this.state} addBook={this.addBook} />
             <AdminPanel path="/admin" addBook={this.addBook} />
           </Router>
         </Container>

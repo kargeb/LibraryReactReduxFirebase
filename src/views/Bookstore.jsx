@@ -18,6 +18,18 @@ class Bookstore extends Component {
     }));
   };
 
+  // componentDidMount() {
+  //   fbase
+  //     .collection("books")
+  //     .get()
+  //     .then(querySnapshot => {
+  //       querySnapshot.forEach(doc => {
+  //         console.log(doc.data());
+  //         this.props.addBook(doc.data());
+  //       });
+  //     });
+  // }
+
   removeFromCart = title => {
     const newOrders = this.state.orders.filter(order => order !== title);
 
