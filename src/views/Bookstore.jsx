@@ -27,7 +27,7 @@ class Bookstore extends Component {
   };
 
   render() {
-    const { books, orders, err } = this.props.stateApp;
+    const { books, err } = this.props.stateApp;
 
     return (
       <>
@@ -39,12 +39,7 @@ class Bookstore extends Component {
         />
         <Row>
           <Col sm={8}>
-            <Inventory
-              books={books}
-              orders={orders}
-              err={err}
-              addToCart={this.addToCart}
-            />
+            <Inventory books={books} err={err} addToCart={this.addToCart} />
           </Col>
           <Col sm={4}>
             <Cart

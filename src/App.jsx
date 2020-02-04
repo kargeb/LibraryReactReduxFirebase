@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./styles/App.css";
 import { Container } from "react-bootstrap";
 import { Router } from "@reach/router";
 import Bookstore from "./views/Bookstore";
@@ -10,7 +10,6 @@ class App extends Component {
     super();
     this.state = {
       books: [],
-      orders: [],
       err: ""
     };
   }

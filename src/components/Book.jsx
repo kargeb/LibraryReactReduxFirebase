@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import "./Book.css";
+import "../styles/Book.css";
 
 export const Book = ({
   title,

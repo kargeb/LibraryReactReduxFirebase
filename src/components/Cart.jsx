@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
-import "./Cart.css";
+import "../styles/Cart.css";
 
 const Cart = ({ orders, removeFromCart }) => (
   <div className="cart">
