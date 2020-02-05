@@ -5,13 +5,15 @@ import { Router } from "@reach/router";
 import Bookstore from "./views/Bookstore";
 import AdminPanel from "./views/AdminPanel";
 import { fbase } from "./fbase";
+import AppContext from "./context";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       books: [],
-      err: ""
+      err: "",
+      message: "piess"
     };
   }
 
@@ -25,7 +27,6 @@ class App extends Component {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          console.log(doc.data());
           this.addBook(doc.data());
         });
       });
@@ -36,13 +37,23 @@ class App extends Component {
   };
 
   render() {
+    // const contextElements = {
+    //   add: this.addBook
+    // };
+
     return (
       <React.StrictMode>
         <Container fluid id="created-by-react">
-          <Router>
-            <Bookstore path="/" stateApp={this.state} addBook={this.addBook} />
-            <AdminPanel path="/admin" addBook={this.addBook} />
-          </Router>
+          <AppContext.Provider value={this.addBook}>
+            <Router>
+              <Bookstore
+                path="/"
+                stateApp={this.state}
+                addBook={this.addBook}
+              />
+              <AdminPanel path="/admin" />
+            </Router>
+          </AppContext.Provider>
         </Container>
       </React.StrictMode>
     );

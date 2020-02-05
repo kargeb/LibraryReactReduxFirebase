@@ -1,8 +1,8 @@
 import React from "react";
 import Heading from "../components/Heading";
-import AddBook from "../components/AddBook";
+import FormAddBook from "../components/FormAddBook";
 
-const AdminPanel = ({ addBook }) => (
+const AdminPanel = () => (
   <>
     <Heading
       link="/"
@@ -10,7 +10,7 @@ const AdminPanel = ({ addBook }) => (
       linkText="Back to Bookstore"
       bgColor="bg-dark"
     />
-    <AddBook addBook={addBook} />
+    <FormAddBook />
   </>
 );
 
