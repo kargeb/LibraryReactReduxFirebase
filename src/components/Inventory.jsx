@@ -1,6 +1,7 @@
 import React from "react";
-import { Book } from "./Book.jsx";
+import Book from "./Book.jsx";
 import { Row, Col, Alert } from "react-bootstrap";
+import firebase from "firebase";
 
 const Inventory = ({ books, addToCart, err }) => {
   const bookComponent = books.map((book, idx) => (
@@ -14,6 +15,17 @@ const Inventory = ({ books, addToCart, err }) => {
       addToCart={addToCart}
     />
   ));
+
+  const anyFun = () => {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        let email = user.email;
+        console.log(email);
+      } else {
+        console.log("Nie zalogowany");
+      }
+    });
+  };
 
   return (
     <>
@@ -31,6 +43,7 @@ const Inventory = ({ books, addToCart, err }) => {
           <>
             <Col>
               {books.length === 0 ? <h3>Brak książek</h3> : bookComponent}
+              <p>{anyFun()}</p>
             </Col>
           </>
         )}

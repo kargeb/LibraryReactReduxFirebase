@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Book } from "./Book";
+import Book from "./Book";
 
 import { configure, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";

@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import "../styles/Book.css";
 
-export const Book = ({
+const Book = ({
   title,
   author,
   publicationDate,
@@ -30,3 +30,5 @@ export const Book = ({
     </Card>
   </div>
 );
+
+export default Book;

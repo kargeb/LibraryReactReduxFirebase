@@ -43,12 +43,17 @@ class Bookstore extends Component {
 
     return (
       <>
-        <Heading
-          link="/admin"
-          headerText="React Bookstore"
-          linkText="Go to Admin Panel"
-          bgColor="bg-primary"
-        />
+        <Row>
+          <Col
+            className={`justify-content-md-center bg-primary text-white text-center`}
+          >
+            <Heading
+              link="/admin"
+              headerText="Bookstore"
+              linkText="Go to AdminPanel"
+            />
+          </Col>
+        </Row>
         <Row>
           <Col sm={8}>
             <Inventory books={books} err={err} addToCart={this.addToCart} />
